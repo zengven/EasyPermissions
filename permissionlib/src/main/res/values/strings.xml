@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Permission Library</string>
+
+    <string name="permission_title">权限申请</string>
+    <string name="goto_setting">去设置</string>
+    <string name="cancel">取消</string>
+    <string name="camera_denied_message">在设置-应用-%1$s-权限中开启相机权限，以正常使用拍照功能</string>
+    <string name="write_external_storage_denied_message">在设置-应用-%1$s-权限中开启存储权限，以正常使用图片上传功能</string>
+    <string name="fine_location_denied_message">在设置-应用-%1$s-权限中开启定位权限，以正常使用定位功能</string>
+
+</resources>
