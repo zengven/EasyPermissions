@@ -12,14 +12,21 @@
         android:id="@+id/btn_camera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="camera"
+        android:text="activity中权限申请"
         android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/btn_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fragment"
+        android:text="activity嵌套fragment权限申请"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_viewpager_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fragment嵌套fragment权限申请"
         android:textAllCaps="false"/>
 
 </LinearLayout>

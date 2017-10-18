@@ -3,15 +3,12 @@ package com.github.easypermissions;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.github.permission.EasyPermissions;
-import com.github.permission.SimplePermissionCallback;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +16,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         View camera = findViewById(R.id.btn_camera);
         View fragment = findViewById(R.id.btn_fragment);
+        View viewpagerFragment = findViewById(R.id.btn_viewpager_fragment);
         camera.setOnClickListener(this);
         fragment.setOnClickListener(this);
+        viewpagerFragment.setOnClickListener(this);
     }
 
     @Override
@@ -36,20 +35,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_fragment:
                 startActivity(new Intent(this, FragmentPermissionActivity.class));
                 break;
+
+            case R.id.btn_viewpager_fragment:
+                startActivity(new Intent(this, ViewPagerActivity.class));
+                break;
             default:
                 break;
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, new SimplePermissionCallback(this) {
-            @Override
-            public void onPermissionsFullGranted(int requestCode) {
-                //do anything ...
-                Toast.makeText(getApplicationContext(), "Permissions Full Granted do anything ...", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void onPermissionsFullGranted(int requestCode) {
+        super.onPermissionsFullGranted(requestCode);
+        Toast.makeText(getApplicationContext(), "permission request success !!! ", Toast.LENGTH_SHORT).show();
     }
 }

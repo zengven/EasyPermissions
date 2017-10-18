@@ -2,23 +2,20 @@ package com.github.easypermissions;
 
 import android.Manifest;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.github.permission.EasyPermissions;
-import com.github.permission.SimplePermissionCallback;
 
 /**
  * author: zengven
  * date: 2017/9/14
  * Desc:
  */
-public class PermissionFragment extends Fragment implements View.OnClickListener {
+public class PermissionFragment extends BaseFragment implements View.OnClickListener {
 
     public static PermissionFragment newInstance() {
         PermissionFragment fragment = new PermissionFragment();
@@ -48,20 +45,13 @@ public class PermissionFragment extends Fragment implements View.OnClickListener
                     //do anything ...
                     Toast.makeText(getContext(), "do anything ...", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, new SimplePermissionCallback(getActivity()) {
-            @Override
-            public void onPermissionsFullGranted(int requestCode) {
-                //do anything ...
-                Toast.makeText(getContext(), "Permissions Full Granted do anything ...", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void onPermissionsFullGranted(int requestCode) {
+        super.onPermissionsFullGranted(requestCode);
+        Toast.makeText(getContext(), "permission request success !!! ", Toast.LENGTH_SHORT).show();
     }
 }

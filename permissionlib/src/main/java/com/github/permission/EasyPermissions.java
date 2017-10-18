@@ -195,21 +195,4 @@ public class EasyPermissions {
             }
         }
     }
-
-    /**
-     * Run permission callbacks on an object that requested permissions but already has them
-     * by simulating {@link PackageManager#PERMISSION_GRANTED}.
-     *
-     * @param object      the object requesting permissions.
-     * @param requestCode the permission request code.
-     * @param perms       a list of permissions requested.
-     */
-    private static void notifyAlreadyHasPermissions(@NonNull Object object, int requestCode, @NonNull String[] perms) {
-        int[] grantResults = new int[perms.length];
-        for (int i = 0; i < perms.length; i++) {
-            grantResults[i] = PackageManager.PERMISSION_GRANTED;
-        }
-
-        onRequestPermissionsResult(requestCode, perms, grantResults, object);
-    }
 }
